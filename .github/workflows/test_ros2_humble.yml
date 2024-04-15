@@ -90,4 +90,4 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           cd ~/ros2_ws
           source install/setup.bash
-          colcon test --ctest-args tests --packages-select webots_spot --event-handlers console_direct+ --return-code-on-test-failure
+          colcon test --ctest-args tests --packages-select sketch_nav_sim --event-handlers console_direct+ --return-code-on-test-failure

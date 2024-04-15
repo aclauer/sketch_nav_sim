@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="Spot">
     <webots>
-        <plugin type="webots_spot.spot_driver.SpotDriver" >
+        <plugin type="sketch_nav_sim.spot_driver.SpotDriver" >
             <arena3>false</arena3>
         </plugin>
 

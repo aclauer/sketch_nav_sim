@@ -9,7 +9,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
-    package_dir = get_package_share_directory("webots_spot")
+    package_dir = get_package_share_directory("sketch_nav_sim")
     use_sim_time = LaunchConfiguration("use_sim_time", default=True)
 
     nav2_map = os.path.join(package_dir, "map", "map.yaml")
@@ -28,7 +28,7 @@ def generate_launch_description():
 
     initial_pose = LaunchConfiguration("set_initial_pose", default=False)
     spot_initial_pose = Node(
-        package="webots_spot",
+        package="sketch_nav_sim",
         executable="set_initial_pose",
         output="screen",
         condition=launch.conditions.IfCondition(initial_pose),

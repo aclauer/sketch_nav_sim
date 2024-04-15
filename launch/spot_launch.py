@@ -13,28 +13,28 @@ from webots_ros2_driver.wait_for_controller_connection import (
 )
 
 
-package_dir = get_package_share_directory("webots_spot")
+package_dir = get_package_share_directory("sketch_nav_sim")
 
 
 # Define all the ROS 2 nodes that need to be restart on simulation reset here
 def get_ros2_nodes(*args):
     # SpotArm Driver node
-    spotarm_ros2_control_params = os.path.join(
-        package_dir, "resource", "spotarm_ros2_controllers.yaml"
-    )
-    spotarm_driver = WebotsController(
-        robot_name="SpotArm",
-        parameters=[
-            {
-                "robot_description": os.path.join(
-                    package_dir, "resource", "spotarm_control.urdf"
-                )
-            },
-            {"use_sim_time": True},
-            {"set_robot_state_publisher": False},
-            spotarm_ros2_control_params,
-        ],
-    )
+    # spotarm_ros2_control_params = os.path.join(
+    #     package_dir, "resource", "spotarm_ros2_controllers.yaml"
+    # )
+    # spotarm_driver = WebotsController(
+    #     robot_name="SpotArm",
+    #     parameters=[
+    #         {
+    #             "robot_description": os.path.join(
+    #                 package_dir, "resource", "spotarm_control.urdf"
+    #             )
+    #         },
+    #         {"use_sim_time": True},
+    #         {"set_robot_state_publisher": False},
+    #         spotarm_ros2_control_params,
+    #     ],
+    # )
 
     # ROS2 control spawners for SpotArm
     controller_manager_timeout = ["--controller-manager-timeout", "500"]
@@ -75,22 +75,23 @@ def get_ros2_nodes(*args):
     ]
 
     # Wait for the simulation to be ready to start RViz, the navigation and spawners
-    waiting_nodes = WaitForControllerConnection(
-        target_driver=spotarm_driver, nodes_to_start=ros2_control_spawners
-    )
+    # waiting_nodes = WaitForControllerConnection(
+    #     target_driver=spotarm_driver, nodes_to_start=ros2_control_spawners
+    # )
 
     initial_manipulator_positioning = Node(
-        package="webots_spot",
+        package="sketch_nav_sim",
         executable="retract_manipulator",
         output="screen",
     )
 
-    return [spotarm_driver, waiting_nodes, initial_manipulator_positioning]
+    # return [spotarm_driver, waiting_nodes, initial_manipulator_positioning]
+    return None
 
 
 def generate_launch_description():
     webots = WebotsLauncher(
-        world=PathJoinSubstitution([package_dir, "worlds", "spot.wbt"])
+        world=PathJoinSubstitution([package_dir, "worlds", "maze.wbt"])
     )
     ros2_supervisor = Ros2SupervisorLauncher()
 
@@ -180,5 +181,5 @@ def generate_launch_description():
             reset_handler,
             pointcloud_to_laserscan_node,
         ]
-        + get_ros2_nodes()
+        # + get_ros2_nodes()
     )

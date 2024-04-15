@@ -1,6 +1,6 @@
 import numpy as np
-from webots_spot.LegKinematics import LegIK
-from webots_spot.LieAlgebra import RpToTrans, TransToRp, TransInv, RPY, TransformVector
+from sketch_nav_sim.LegKinematics import LegIK
+from sketch_nav_sim.LieAlgebra import RpToTrans, TransToRp, TransInv, RPY, TransformVector
 from collections import OrderedDict
 
 

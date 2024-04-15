@@ -12,10 +12,10 @@ from tf2_ros.transform_broadcaster import TransformBroadcaster
 import numpy as np
 import copy
 
-from webots_spot.SpotKinematics import SpotModel
-from webots_spot.Bezier import BezierGait
+from sketch_nav_sim.SpotKinematics import SpotModel
+from sketch_nav_sim.Bezier import BezierGait
 
-from webots_spot.arena_modifier import ArenaModifier
+from sketch_nav_sim.arena_modifier import ArenaModifier
 
 NUMBER_OF_JOINTS = 12
 HEIGHT = 0.52  # From spot kinematics

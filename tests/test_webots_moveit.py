@@ -97,7 +97,7 @@ def generate_test_description():
     webots_spot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
-                get_package_share_directory("webots_spot"),
+                get_package_share_directory("sketch_nav_sim"),
                 "launch",
                 "spot_launch.py",
             )
@@ -109,7 +109,7 @@ def generate_test_description():
     moveit = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
-                get_package_share_directory("webots_spot"),
+                get_package_share_directory("sketch_nav_sim"),
                 "launch",
                 "moveit_launch.py",
             )

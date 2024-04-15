@@ -6,10 +6,10 @@ from launch import LaunchDescription
 
 
 def generate_launch_description():
-    gpp = os.path.join(get_package_share_directory("webots_spot"), "resource")
+    gpp = os.path.join(get_package_share_directory("sketch_nav_sim"), "resource")
 
     gpp_stacker = Node(
-        package="webots_spot",
+        package="sketch_nav_sim",
         executable="gpp_stacker",
         output="screen",
     )

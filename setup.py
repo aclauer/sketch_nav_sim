@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = "webots_spot"
+package_name = "sketch_nav_sim"
 setup(
     name=package_name,
     version="0.0.0",

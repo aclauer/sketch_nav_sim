@@ -30,7 +30,7 @@ from ament_index_python.packages import (
 )
 
 
-PACKAGE_NAME = "webots_spot"
+PACKAGE_NAME = "sketch_nav_sim"
 
 
 def generate_launch_description():
