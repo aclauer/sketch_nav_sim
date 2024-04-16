@@ -6,7 +6,7 @@ from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration("use_sim_time", default=False)
+    use_sim_time = LaunchConfiguration("use_sim_time", default=True)
 
     slam_toolbox = Node(
         parameters=[
@@ -30,9 +30,20 @@ def generate_launch_description():
         parameters=[{"use_sim_time": use_sim_time}],
     )
 
+    # Set up the initial position of the robot
+    # Need to do this to start the scan?
+
+    initial_pos = Node(
+        package='tf2_ros',
+        namespace='scan_to_map',
+        executable='static_transform_publisher',
+        arguments=["0", "0", "0", "0", "0", "0", "map", "scan"] 
+    )
+
     return LaunchDescription(
         [
             slam_toolbox,
             slam_rviz,
+            initial_pos,
         ]
     )

@@ -15,7 +15,7 @@ import copy
 from sketch_nav_sim.SpotKinematics import SpotModel
 from sketch_nav_sim.Bezier import BezierGait
 
-from sketch_nav_sim.arena_modifier import ArenaModifier
+# from sketch_nav_sim.arena_modifier import ArenaModifier
 
 NUMBER_OF_JOINTS = 12
 HEIGHT = 0.52  # From spot kinematics
@@ -285,7 +285,7 @@ class SpotDriver:
         self.previous_cmd = False
 
         # Initialise arena modifier
-        ArenaModifier(self.__node, self.__robot)
+        # ArenaModifier(self.__node, self.__robot)
 
     def __model_cb(self):
         spot_rot = self.spot_node.getField("rotation")
@@ -442,26 +442,26 @@ class SpotDriver:
         if not self.arena3:
             transforms_to_publish = [
                 "Spot",
-                "A",
-                "B",
-                "C",
-                "T1",
-                "T2",
-                "T3",
-                "P",
-                "Image1",
-                "Image2",
-                "Image3",
-                "PlaceBox",
+                # "A",
+                # "B",
+                # "C",
+                # "T1",
+                # "T2",
+                # "T3",
+                # "P",
+                # "Image1",
+                # "Image2",
+                # "Image3",
+                # "PlaceBox",
             ]
         else:
             transforms_to_publish = ["Spot"]
-            for i, color in enumerate(["Red", "Green", "Blue"]):
-                transforms_to_publish.append(f"DropBox{i+1}")
-                for idx in range(3):
-                    transforms_to_publish.append(f"{color.upper()}_{idx+1}")
-            for idx in range(3):
-                transforms_to_publish.append(f"YellowDropBox_{idx+1}")
+            # for i, color in enumerate(["Red", "Green", "Blue"]):
+            #     transforms_to_publish.append(f"DropBox{i+1}")
+            #     for idx in range(3):
+            #         transforms_to_publish.append(f"{color.upper()}_{idx+1}")
+            # for idx in range(3):
+            #     transforms_to_publish.append(f"YellowDropBox_{idx+1}")
 
         ## Odom to following:
         tfs = []
