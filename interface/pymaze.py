@@ -1,6 +1,7 @@
 import pygame
 import sys
 import time
+import math
 
 # Define global constants and variables
 WIDTH, HEIGHT = 1000, 1000
@@ -32,8 +33,14 @@ def init_game():
 def update_follower():
     global follower_index
     if follower_index < len(path) - 1:
-        print(f"Follower at: {path[follower_index]} aiming for {path[follower_index + 1]}")
-        follower_index += 1  # Move to the next point in the path
+        current_pos = path[follower_index]
+        next_pos = path[follower_index + 1]
+        dx = next_pos[0] - current_pos[0]
+        dy = next_pos[1] - current_pos[1]
+        angle = math.atan2(dy, dx)  # Angle in radians
+        angle_degrees = math.degrees(angle)  # Convert to degrees
+        print(f"Follower at: {current_pos} aiming for {next_pos} at angle {angle_degrees:.2f} degrees")
+        follower_index += 1
     elif follower_index == len(path) - 1:
         print(f"Follower at: {path[follower_index]} has reached the end of the path")
 
